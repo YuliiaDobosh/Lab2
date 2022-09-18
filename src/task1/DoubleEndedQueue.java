@@ -46,8 +46,7 @@ public class DoubleEndedQueue<E> implements Iterable<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
-        return new DEQIterator();
+    public Iterator<E> iterator() {return new DEQIterator();
     }
 
     class DEQIterator implements Iterator<E> {

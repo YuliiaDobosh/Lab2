@@ -1,20 +1,21 @@
 package task3.service;
 
+import task2.Group;
 import task2.Student;
-import task2.StudentSubject;
+import task2.Subject;
 import task2.University;
 
 public class AddSubject {
-    final private University university;
+    final private Subject subject;
 
-    public AddSubject(final University university) {
-        this.university = university;
+    public AddSubject(final String nameSubject) {
+        this.subject = new Subject(nameSubject);
     }
 
-    public void add(final String nameSubject, final String group) {
-        for (final Student student : university.getStudents()) {
-            if (student.getGroup().equals(group)) {
-                student.getSubjects().add(new StudentSubject(nameSubject));
+    public void add(final University university, final String groupName) {
+        for (final Group group : university.getGroups()) {
+            if (group.getGroupName().equals(groupName)) {
+                group.getSubjects().add(subject);
             }
         }
     }

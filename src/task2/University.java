@@ -4,30 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class University {
-    private List<Student> students;
+    private List<Group> groups;
 
-    public List<Student> getStudents() {
-        return students;
+    public List<Group> getGroups() {
+        return groups;
     }
 
-    public void setStudents(final List<Student> students) {
-        this.students = students;
+    public void setGroups(final List<Group> groups) {
+        this.groups = groups;
     }
 
-    public University(final List<Student> students) {
-        this.students = students;
-    }
-
-    public University() {
-        this.students = new ArrayList<Student>();
+    public University(final List<Group> groups) {
+        this.groups = groups;
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("students:\n");
-        for (final Student student : students) {
-            builder.append(student).append('\n');
+        for (final Group group : groups) {
+            builder.append(group).append('\n');
         }
         return builder.toString();
     }

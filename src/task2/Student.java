@@ -4,16 +4,18 @@ import java.util.List;
 
 public class Student {
     private String fullName;
-    private String group;
-    private String speciality;
-    private List<StudentSubject> subjects;
+    private Group group;
+    private List<Subject> subjects;
 
-    public String getGroup() {
-        return group;
+    public Student(final String fullName, final Group group) {
+        this.fullName = fullName;
+        this.group = group;
     }
 
-    public void setGroup(final String group) {
+    public Student(final String fullName, final Group group, final List<Subject> subjects) {
+        this.fullName = fullName;
         this.group = group;
+        this.subjects = subjects;
     }
 
     public String getFullName() {
@@ -24,44 +26,31 @@ public class Student {
         this.fullName = fullName;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public Group getGroup() {
+        return group;
     }
 
-    public void setSpeciality(final String speciality) {
-        this.speciality = speciality;
+    public void setGroup(final Group group) {
+        this.group = group;
     }
 
-    public List<StudentSubject> getSubjects() {
+    public List<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(final List<StudentSubject> subjects) {
+    public void setSubjects(final List<Subject> subjects) {
         this.subjects = subjects;
-    }
-
-    public Student(final String fullName, final String speciality, final String group, final List<StudentSubject> subjects) {
-        this.fullName = fullName;
-        this.speciality = speciality;
-        this.group = group;
-        this.subjects = subjects;
-    }
-
-    public Student(final String fullName, final String speciality, final String group) {
-        this.fullName = fullName;
-        this.speciality = speciality;
-        this.group = group;
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("full name: ").append(fullName).append('\n');
-        builder.append("speciality: ").append(speciality).append('\n');
-        builder.append("group: ").append(group).append('\n');
-        for (final StudentSubject subject : subjects) {
-            builder.append(subject).append('\n');
+        builder.append(fullName).append(", ").append(group.getGroupName());
+        builder.append(", [");
+        for (final Subject subject : subjects) {
+            builder.append(subject).append(", ");
         }
+        builder.append(']');
         return builder.toString();
     }
 }

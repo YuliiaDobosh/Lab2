@@ -15,18 +15,19 @@ public class SortStudent {
     }
 
     public List<Student> getList() {
-        final List<Student> list = new ArrayList<Student>(university.getStudents());
-        list.sort(new Comparator<Student>() {
-            @Override
-            public int compare(final Student o1, final Student o2) {
-                return o1.getFullName().compareTo(o2.getFullName());
-            }
-        });
+
+        final List<Student> list = new ArrayList<Student>();
+        university.getGroups().stream().forEach(group -> list.addAll(group.getStudents()));
+        list.sort(Comparator.comparing(Student::getFullName));
         return list;
     }
+
     public void display(final List<Student> students) {
+        System.out.print('[');
         for (final Student student : students) {
-            System.out.println(student.getFullName() + " " + student.getGroup());
+            System.out.print(student.getFullName() + ", ");
         }
+        System.out.print(']');
+        System.out.println();
     }
 }
